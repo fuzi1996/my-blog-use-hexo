@@ -1,5 +1,10 @@
 ---
 title: 如何改变Hexo无主题的favicon
+date: 2021-8-28
+tags:
+- hexo
+- favicon
+categories: hexo
 ---
 找了半天也没发现修改`_config.yml`里面配置改变默认favicon的方法
 
