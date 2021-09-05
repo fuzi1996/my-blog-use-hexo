@@ -1,5 +1,5 @@
 ---
-title: jeecg 如何生成验证码
+title: jeecg 2.4.6 如何生成验证码
 date: 2021-9-5 19:33:00
 tags:
 - 验证码
@@ -9,7 +9,9 @@ categories: jeecg
 
 ## 验证码是怎么来的？
 
-![index_html_checkcode](/assets/images/jeecg/index_html_checkcode.png)
+前端地址:
+
+`src\views\user\LoginAccount.vue`
 
 ## 前台请求
 
@@ -20,7 +22,6 @@ categories: jeecg
 - 返回参数：
 
 ```js
-
   {
     "success": true,
     "message": "操作成功！",
@@ -28,16 +29,32 @@ categories: jeecg
     "result": "data:image/jpg;base64,xxxx..",
     "timestamp": 1585981360953
   }
-
 ```
 
 ## 获取验证码前端
 
-![login_vue](/assets/images/jeecg/login_vue.png)
+```js
+handleChangeCheckCode(){
+  // 缓存当前时间戳
+  this.currdatetime = new Date().getTime();
+  this.model.inputCode = ''
+  getAction(`/sys/randomImage/${this.currdatetime}`).then(res=>{
+    if(res.success){
+      this.randCodeImage = res.result
+      this.requestCodeSuccess=true
+    }else{
+      this.$message.error(res.message)
+      this.requestCodeSuccess=false
+    }
+  }).catch(()=>{
+    this.requestCodeSuccess=false
+  })
+}
+```
 
 我们得知，/sys/randomImages后面跟的是当前时间戳，且前台会把当前时间戳记录下来；至于_t，我猜是为了防止请求缓存，携带的随机数
 
-由下面图片得到验证
+由下面图片得到验证(`地址:src\utils\request.js`)
 
 ![request_js](/assets/images/jeecg/request_js.png)
 
@@ -45,8 +62,11 @@ categories: jeecg
 
 ![LoginController_java_randomImage](/assets/images/jeecg/LoginController_java_randomImage.png)
 
-```java
+文件地址:
 
+org.jeecg.modules.system.controller.LoginController#randomImage
+
+```java
 String code = RandomUtil.randomString(BASE_CHECK_CODES,4);
 String lowerCaseCode = code.toLowerCase();
 String realKey = MD5Util.MD5Encode(lowerCaseCode+key,"utf-8");
@@ -56,23 +76,21 @@ redisUtil.set(realKey,lowerCaseCode,60);
 String base64 = RandImageUtil.generate(code);
 res.setSuccess(true);
 res.setResult(base64);
-
 ```
 
 ### 验证码照片生成RandImageUtil.generate
 
+org.jeecg.modules.system.util.RandImageUtil#generate(java.lang.String)
+
 ```java
-
-//RandImageUtil主要市这句产生随机验证码图片
+//RandImageUtil主要是这句产生随机验证码图片
 BufferedImage image = getImageBuffer(resultCode);
-
 ```
 
 `getImageBuffer`方法如下
 
 
 ```java
-
 private static BufferedImage getImageBuffer(String resultCode){
         // 在内存中创建图象
         final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -83,7 +101,7 @@ private static BufferedImage getImageBuffer(String resultCode){
         // 填充矩形
         graphics.fillRect(0, 0, width, height);
         // 设定边框颜色
-//		graphics.setColor(getRandColor(100, 200)); // ---2
+        // graphics.setColor(getRandColor(100, 200)); // ---2
         graphics.drawRect(0, 0, width - 1, height - 1);
 
         final Random random = new Random();
@@ -105,7 +123,7 @@ private static BufferedImage getImageBuffer(String resultCode){
             // 设置字体颜色
             graphics.setColor(Color.BLACK);
             // 设置字体样式
-//			graphics.setFont(new Font("Arial Black", Font.ITALIC, 18));
+            // graphics.setFont(new Font("Arial Black", Font.ITALIC, 18));
             graphics.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // 设置字符，字符间距，上边距
             graphics.drawString(String.valueOf(resultCode.charAt(i)), (23 * i) + 8, 26);
@@ -114,5 +132,4 @@ private static BufferedImage getImageBuffer(String resultCode){
         graphics.dispose();
         return image;
 }
-
 ```

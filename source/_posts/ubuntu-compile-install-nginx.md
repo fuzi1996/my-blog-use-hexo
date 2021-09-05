@@ -14,7 +14,6 @@ categories: nginx
 ## 安装编译环境
 
 ```bash
-
 sudo apt-get update
 #安装依赖：gcc、g++依赖库
 sudo apt-get install build-essential libtool
@@ -24,29 +23,24 @@ sudo apt-get install libpcre3 libpcre3-dev
 sudo apt-get install zlib1g-dev
 #安装ssl依赖库
 sudo apt-get install openssl
-
 ```
 
 ## 编译安装
 
 ```bash
-
 # 使用默认配置安装()
 make check && make
-
 ```
 
 ## 为`nginx`建立软链接
 
 ```bash
-
 # 查找nginx命令地址 无特殊配置，默认为/usr/local/nginx/sbin/nginx
 whereis nginx
 # 建立软链接
 ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 # 测试 有正常输出意味着nginx安装完成
 nginx -V 
-
 ```
 
 ## 参考

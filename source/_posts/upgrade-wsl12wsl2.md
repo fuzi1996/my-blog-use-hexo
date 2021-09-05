@@ -24,9 +24,7 @@ categories: wsl
 ## 设置wsl默认版本
 
 ```bash
-
 wsl --set-default-version 2
-
 ```
 
 ## 转化已有实例为wsl2
@@ -34,9 +32,7 @@ wsl --set-default-version 2
 比如,我的电脑已有实例`Ubuntu-20.04`
 
 ```bash
-
 wsl --set-version Ubuntu-20.04 2
-
 ```
 
 等待转化完毕后执行命令`wsl -l -v`就可以看到`Ubuntu-20.04`实例当前版本已经改为`2`版本

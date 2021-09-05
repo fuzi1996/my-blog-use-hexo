@@ -23,9 +23,7 @@ categories: frp
 例如
 
 ```bash
-
 nohup ./frpc -c ./frpc.ini
-
 ```
 
 ### 3.2 以服务的方式运行
@@ -45,7 +43,6 @@ nohup ./frpc -c ./frpc.ini
 - 最后
 
 ```bash
-
 # 使用service或者systemctl启动服务
 service frpc start|reload|stop|status
 systemctl frpc start|reload|stop|status
@@ -56,7 +53,6 @@ systemctl enabl frpc
 systemctl disable frpc
 #查看服务是否开机启动
 systemctl is-enabled frpc
-
 ```
 
 
@@ -66,7 +62,6 @@ systemctl is-enabled frpc
 参考脚本,以frpc为例,这个脚本是我以sshd为基础改的:
 
 ```bash
-
 #!/bin/bash
 #chkconfig 2345 99 01
 # frpc
@@ -134,7 +129,6 @@ case "$1" in
 		RETVAL=2
 esac
 exit $RETVAL
-
 ```
 
 #### 配置
@@ -149,10 +143,8 @@ chkconfig --add frpc
 #### 使用:
 
 ```bash
-
 #脚本中已经自动为开机启动
 service frpc start|reload|restart|stop
-
 ```
 
 ## 参考链接

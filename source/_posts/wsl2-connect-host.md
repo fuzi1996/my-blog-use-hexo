@@ -13,18 +13,14 @@ categories: wsl
 ## 设置host主机wsl虚拟网卡地址
 
 ```bash
-
 # 该设置需要管理员权限
 netsh interface ip add address "vEthernet (WSL)" 10.88.88.1 255.255.255.0
-
 ```
 
 ## 设置wsl实例ip地址
 
 ```bash
-
 wsl -d Ubuntu-20.04 -u root ip addr add 10.88.88.2/24 broadcast 10.88.88.255 dev eth0 label eth0:1
-
 ```
 
 ## 计划任务
