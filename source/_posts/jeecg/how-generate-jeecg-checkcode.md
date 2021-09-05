@@ -2,7 +2,7 @@
 title: jeecg 2.4.6 如何生成验证码
 date: 2021-9-5 19:33:00
 tags:
-- 验证码
+- 验证码生成
 - jeecg
 categories: jeecg
 ---
