@@ -10,11 +10,11 @@ categories: vue-form-making
 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making)是基于 vue2 和 element-ui 实现的可视化表单设计器。
 其分为开源版本与收费版本。本文仅分析他的开源版本。
 
-![界面预览](./assets/images/vue-form-making/界面预览.png)
+![界面预览](/assets/images/vue-form-making/界面预览.png)
 
 ## 界面结构
 
-[![表单设计器界面结构.drawio.png](./assets/images/vue-form-making/表单设计器界面结构.drawio.png)](./assets/drawio/vue-form-making/表单设计器界面结构.drawio)
+[![表单设计器界面结构.drawio.png](/assets/images/vue-form-making/表单设计器界面结构.drawio.png)](/assets/drawio/vue-form-making/表单设计器界面结构.drawio)
 
 ## 名称与文件路径关系
 
@@ -30,19 +30,19 @@ categories: vue-form-making
 
 ## 各文件功能分析
 
-[![表单设计器各文件功能.drawio.png](./assets/images/vue-form-making/表单设计器各文件功能.drawio.png)](./assets/drawio/vue-form-making/表单设计器各文件功能.drawio)
+[![表单设计器各文件功能.drawio.png](/assets/images/vue-form-making/表单设计器各文件功能.drawio.png)](/assets/drawio/vue-form-making/表单设计器各文件功能.drawio)
 
 ## 渲染时各文件功能
 
 1. 即时预览时
 
-[![表单设计器即时预览时各文件功能.drawio.png](./assets/images/vue-form-making/表单设计器即时预览时各文件功能.drawio.png)](./assets/drawio/vue-form-making/表单设计器即时预览时各文件功能.drawio)
+[![表单设计器即时预览时各文件功能.drawio.png](/assets/images/vue-form-making/表单设计器即时预览时各文件功能.drawio.png)](/assets/drawio/vue-form-making/表单设计器即时预览时各文件功能.drawio)
 
 `WidgetFormItem`为即时预览时组件最终渲染器。
 
 2. 渲染时
 
-[![表单设计器界面渲染时各文件功能.drawio.png](./assets/images/vue-form-making/表单设计器界面渲染时各文件功能.drawio.png)](./assets/drawio/vue-form-making/表单设计器界面渲染时各文件功能.drawio)
+[![表单设计器界面渲染时各文件功能.drawio.png](/assets/images/vue-form-making/表单设计器界面渲染时各文件功能.drawio.png)](/assets/drawio/vue-form-making/表单设计器界面渲染时各文件功能.drawio)
 
 `GenerateFormItem`为渲染时组件最终渲染器。
 
@@ -50,7 +50,7 @@ categories: vue-form-making
 
 ### 内部组件
 
-[![表单设计器界面渲染时数据改变流程.drawio.png](./assets/images/vue-form-making/表单设计器界面渲染时数据改变流程.drawio.png)](./assets/drawio/vue-form-making/表单设计器界面渲染时数据改变流程.drawio)
+[![表单设计器界面渲染时数据改变流程.drawio.png](/assets/images/vue-form-making/表单设计器界面渲染时数据改变流程.drawio.png)](/assets/drawio/vue-form-making/表单设计器界面渲染时数据改变流程.drawio)
 
 1. `GenerateFormItem`中组件的数据`dataModel`发生改变,通过`update:models`修改上层组件的`models`数据,通过`input-change`事件触发`GenerateForm`的`onInputChange`方法
 2. `GenerateForm`的`onInputChange`方法中通过`on-change`方法对外暴露组件数据改变事件
