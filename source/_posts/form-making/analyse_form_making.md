@@ -8,7 +8,7 @@ categories: vue-form-making
 ---
 
 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making)是基于 vue2 和 element-ui 实现的可视化表单设计器。
-其分为开源版本与收费版本。本文仅分析他的开源版本。
+其分为开源版本与收费版本。本文仅分析他的开源版本。分析版本为:`1.2.10`
 
 ![界面预览](/assets/images/vue-form-making/界面预览.png)
 
