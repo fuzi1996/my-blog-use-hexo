@@ -6,8 +6,6 @@ name: DEPLOY CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -16,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,7 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: git config --global user.name "fuzi"
+    - run: git config --global user.name "fuzi1996"
     - run: git config --global user.email "imfuzi@163.com"
     - run: npm install
     - run: npm run deploy
