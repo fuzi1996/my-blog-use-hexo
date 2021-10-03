@@ -4,7 +4,7 @@ tags:
   - vue2
   - jest Test
 date: 2021-09-25 09:23:19
-categories:vue2
+categories: vue2
 ---
 
 现有一vue2工程(vue初始化工程,仅有`HelloWorld.vue`)，需要给它添加jest单元测试
