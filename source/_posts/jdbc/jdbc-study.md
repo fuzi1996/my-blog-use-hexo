@@ -1,5 +1,5 @@
 ---
-title: jdbc学习
+title: JDBC 学习
 tags:
   - jdbc
 date: 2021-10-01 10:21:51
@@ -12,6 +12,76 @@ categories: jdbc
 
 JDBC驱动其实就是实现了JAVA接口的一组jar包
 
+## JDBC执行流程
+
+```plantuml
+@startuml
+
+:获得连接;
+note right
+  Connection
+end note
+:预编译SQL;
+note right
+  PrepareStatement
+end note
+:设置参数;
+:执行SQL;
+note right
+  ResultSet
+end note
+
+@enduml
+```
+
+## JDBC API简介
+
+### 建立数据源连接
+
+- DriverManager 完全由JDBC API实现的驱动管理类
+- DataSource 更灵活,由JDBC驱动程序提供
+  - ConnectionPoolDataSource 支持缓存和复用Connection对象，这样能够在很大程度上提升应用性能和伸缩性。
+  - XADataSource 该实例返回的Connection对象能够支持分布式事务。
+
+### 执行SQL语句
+
+调用ResultSet对象的getMetaData()方法获取结果集元数据信息。该方法返回一个ResultSetMetaData对象，我们可以通过ResultSetMetaData对象获取结果集中所有的字段名称、字段数量、字段数据类型等信息
+
+### java.sql包
+
+![java.sql核心类关系,来自MyBatis 3源码深度解析／江荣波](/assets/images/jdbc/jdbc-study/java.sql核心类关系.png)
+
+#### Wrapper
+
+许多JDBC驱动程序提供超越传统JDBC的扩展，为了符合JDBC API规范，驱动厂商可能会在原始类型的基础上进行包装，Wrapper接口为使用JDBC的应用程序提供访问原始类型的功能，从而使用JDBC驱动中一些非标准的特性
+
+- unwrap()方法用于返回未经过包装的JDBC驱动原始类型实例，我们可以通过该实例调用JDBC驱动中提供的非标准的方法
+- isWrapperFor()方法用于判断当前实例是否是JDBC驱动中某一类型的包装类型
+
+例如:
+
+```java
+
+Statement statement = connection.createStatement();
+Class clazz = Class.forname("oracle.jdbc.OracleStatement");
+if(statement.isWrapperFor(clazz)){
+  OracleStatement oracleStatement = (OracleStatement)stmt.unwrap(clazz);
+  // do otherthing
+}
+
+```
+
+### javax.sql包
+
+- DataSource接口
+  无需像DriverManager似的硬编码
+- PooledConnection接口
+  连接复用
+- XADataSource、XAResource和XAConnection接口
+  分布式事务支持
+- RowSet接口
+  RowSet就相当于数据库表数据在应用程序内存中的映射
+
 ## 示例
 
 ### 通过JDBC访问MySql
@@ -19,7 +89,7 @@ JDBC驱动其实就是实现了JAVA接口的一组jar包
 **环境声明:**
 
 - mysql数据库地址:10.88.88.2:3306
-- mysql版本(select version()):8.0.26
+- mysql版本(`select version()`):8.0.26
 
 #### 前期准备
 
@@ -295,3 +365,5 @@ try (PreparedStatement ps = conn.prepareStatement("INSERT INTO students (name, g
 ## 参考
 
 1.[JDBC编程](https://www.liaoxuefeng.com/wiki/1252599548343744/1255943820274272)
+2.[MyBatis源码解析大合集](https://www.bilibili.com/video/BV1Tp4y1X7FM)
+3.MyBatis 3源码深度解析／江荣波
