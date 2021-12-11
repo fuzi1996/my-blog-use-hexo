@@ -6,6 +6,7 @@ const args = process.argv.slice(2)
 console.log('传入参数',args)
 
 if(args.length != 2){
+  console.error('传入参数有误')
   return
 }
 
