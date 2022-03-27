@@ -1,9 +1,10 @@
 ---
 title: Maven生命周期与插件
 tags:
-  - null
+  - Maven
+  - Maven LifeCycle
 date: 2021-12-11 11:58:45
-categories:
+categories: Maven
 ---
 
 ## maven生命周期
