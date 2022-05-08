@@ -35,9 +35,11 @@ dbapi支持两种部署模式,一种是单机版(`standalone`模式),一种是�
 同时注意到单机版返回的`response`的`content-type`正常,`apiserver`返回的`response`没有`content-type`
 
 单机版返回response示例:
+
 ![单机返回response](/assets/images/dbapi/单机返回response.png)
 
 `apiserver`返回response示例:
+
 ![apiserver返回response](/assets/images/dbapi/apiserver返回response.png)
 
 因此我们怀疑是**apiserver没有为response设置content-type造成中文乱码**
@@ -117,11 +119,13 @@ System.out.println("设置ContentType后: "+contentType);
 首先我们要注意，dbapi在两种模式下的`FilterChain`是不同的
 
 1. 单机版FilterChain
+
 ![单机版FilterChain](/assets/images/dbapi/单机版FilterChain.png)
 
 当请求单机版时,`apiIPFilter`在`apiHeaderFilter`之前,因此此时`apiHeaderFilter`设不设置无所谓
 
 2. 集群版FilterChain
+
 ![集群版FilterChain](/assets/images/dbapi/集群版FilterChain.png)
 
 当请求集群版时,`apiAuthFilter`在`apiHeaderFilter`之前,此时`apiHeaderFilter`再设置就不起作用了
