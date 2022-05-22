@@ -122,3 +122,5 @@ git clone --recursive --depth=1 https://github.com/boostorg/boost.git boost_1_72
 ### 3.修复
 
 删掉`(我的目录)/gitrepos/core/Common/3dParty/boost/boost_1_72_0`这个目录,重新执行一遍编译
+
+`FUCK GFW`
