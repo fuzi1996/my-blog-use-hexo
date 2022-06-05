@@ -13,12 +13,13 @@
     "demo": "echo %npm_package_version%"
   },
   "hexo": {
-    "version": "5.4.0"
+    "version": "6.2.0"
   },
   "dependencies": {
     "hexo": "^6.2.0",
     "hexo-deployer-git": "^3.0.0",
     "hexo-filter-kroki": "^2.1.8",
+    "hexo-filter-mermaid-diagrams": "^1.0.5",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^3.0.0",
