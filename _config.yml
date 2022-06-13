@@ -111,13 +111,3 @@ deploy:
 ## rss
 rss:
   true
-
-# mermaid chart
-mermaid: ## mermaid url https://github.com/knsv/mermaid
-  enable: false  
-  # default true
-  version: "9.1.1"
-  # default v7.1.2
-  options:  
-  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
-  #startOnload: true  // default true
