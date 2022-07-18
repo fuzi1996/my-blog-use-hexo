@@ -53,9 +53,9 @@ BtSnoopFileName=/data/log/bt/btsnoop_hci.log
 2. 进入手机拨号界面输入：`*#*#2846579#*#*`
    依次选择`后台设置`—`AP LOG设置`—`点击打开` 保存即可
 
-   ![step1](/assets/images/harmony/collect_hci_log/p1.png)]
-   ![step2](/assets/images/harmony/collect_hci_log/p2.png)]
-   ![step3](/assets/images/harmony/collect_hci_log/p3.png)]
+   ![step1](/assets/images/harmony/collect_hci_log/p1.png)
+   ![step2](/assets/images/harmony/collect_hci_log/p2.png)
+   ![step3](/assets/images/harmony/collect_hci_log/p3.png)
 3. 重新操作蓝牙即可观察到日志,但是注意日志文件名并不是`btsnoop_hci.log`,而是附带了日期例如`btsnoop_hci_20220716_101108.log`
 
 
