@@ -1,5 +1,5 @@
 ---
-title: FormItem使用v-if导致校验异常问题
+title: ElFormItem使用v-if导致校验异常问题
 tags:
   - vue
   - element-ui
