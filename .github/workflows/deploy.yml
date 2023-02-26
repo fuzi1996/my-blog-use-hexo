@@ -21,7 +21,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # If your repository depends on submodule, please see: https://github.com/actions/checkout
-        submodules: recursive
+        # submodules: recursive
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
