@@ -8,9 +8,7 @@
     "deploy:just": "hexo deploy",
     "deploy": "npm run clean && npm run build && hexo deploy",
     "server": "hexo server",
-    "new": "node ./scripts/newPage.js",
-    "test": "node ./scripts/test.js $npm_config_title",
-    "demo": "echo %npm_package_version%"
+    "new": "node ./newPage.js"
   },
   "hexo": {
     "version": "6.3.0"
